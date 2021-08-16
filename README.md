@@ -51,13 +51,53 @@ BanditPolicy has been used for early stopping to converge quickly when the evalu
 ## AutoML
 
 Out of 26 models that has been tested by AutoML `Voting Ensemble` turns out to be the best model with an accuracy of 91.65%
-The Voting Ensemble model consists of 7 individual models, of which 4 are XGBoost classifiers, and 1 each of a LightGBM, SGD and Logistic Regression
+The Voting Ensemble model consists of 7 individual models, of which 4 are XGBoost classifiers, and 1 each of a LightGBM, Random Forest and Logistic Regression
 Below config has been used for AutoML,
 
-- [x] experiment_timeout_minutes=30  *save azure resources usage cost*
-- [x] task=classification            *since its classification to predict yes/no* 
-- [x] primary_metric='accuracy'      *primary evaluation metric to measure model performance*
-- [x] n_cross_validations=3          *training on 66% and testing on 33% data to make sure model is not overfitting*
+- [x] experiment_timeout_minutes=30,          *save azure resources usage cost*
+- [x] task=classification,                    *since its classification to predict yes/no* 
+- [x] primary_metric='accuracy',              *primary evaluation metric to measure model performance*
+- [x] n_cross_validations=3,                  *training on 66% and testing on 33% data to make sure model is not overfitting*
+
+**XGBoost parameters**
+
+        "booster": "gbtree",
+        "colsample_bytree": 1,
+        "eta": 0.05,
+        "gamma": 0,
+        "max_depth": 6,
+        "max_leaves": 0,
+        "n_estimators": 200,
+        "objective": "reg:logistic",
+        "reg_alpha": 0.625,
+        "reg_lambda": 0.8333333333333334,
+        "subsample": 0.8,
+        "tree_method": "auto"
+
+**Random Forest parameters**
+
+        "class_name": "RandomForestClassifier",
+        "bootstrap": false,
+        "class_weight": "balanced",
+        "criterion": "entropy",
+        "max_features": "sqrt",
+        "min_samples_leaf": 0.035789473684210524,
+        "min_samples_split": 0.15052631578947367,
+        "n_estimators": 100,
+        "oob_score": false
+        
+**Logistic Regression parameters**
+
+        "C": 719.6856730011514,
+        "class_weight": null,
+        "multi_class": "multinomial",
+        "penalty": "l2",
+        "solver": "lbfgs"
+        
+**LightGBM parameters**
+
+        "min_data_in_leaf": 20
+    
 
 ## Pipeline comparison
 

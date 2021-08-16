@@ -8,6 +8,23 @@ This model is then compared to an Azure AutoML run.
 ## Summary
 In this project, the UCI Bank Marketing dataset is used to predict whether the bank's clients will open a term deposit with them or not. So, this is a binary classification problem which requires predicting 'yes' or 'no'
 
+Dataset consist of 40 columns and ~33k rows
+
+Broadly classifying, independent variables consist of customers demographics,employment status,qualification, education and marital status information.
+
+Here is a list of all the columns available in dataset:
+
+>      'age', 'marital', 'default', 'housing', 'loan', 'month', 'day_of_week',
+>      'duration', 'campaign', 'pdays', 'previous', 'poutcome', 'emp.var.rate',
+>      'cons.price.idx', 'cons.conf.idx', 'euribor3m', 'nr.employed',
+>      'job_admin.', 'job_blue-collar', 'job_entrepreneur', 'job_housemaid',
+>      'job_management', 'job_retired', 'job_self-employed', 'job_services',
+>      'job_student', 'job_technician', 'job_unemployed', 'job_unknown',
+>      'contact_cellular', 'contact_telephone', 'education_basic.4y',
+>      'education_basic.6y', 'education_basic.9y', 'education_high.school',
+>      'education_illiterate', 'education_professional.course',
+>      'education_university.degree', 'education_unknown', 'y'
+
 For this classification task, broadly two approaches have been used:
 
 > `Scikit-learn` Logistic Regression model is build using Scikit learn library and the hyperparameters are fine tuned using AzureML's Hyperdrive, and this approach is able to achieve an accuracy of 90.85%
